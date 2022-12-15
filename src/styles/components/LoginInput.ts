@@ -7,7 +7,7 @@ const loginVariant = {
     fontWeight: "400",
     borderRadius: "8px",
     backgroundColor: "#F3F5F6",
-    marginTop: "0px",
+    marginTop: "0px !important",
     color: "#333333",
   },
 };

@@ -7,6 +7,7 @@ import {
   FormLabel,
   IconButton,
   Input,
+  InputGroup,
   InputRightElement,
   Text,
 } from "@chakra-ui/react";
@@ -16,6 +17,7 @@ import { useForm } from "react-hook-form";
 import mainLogo from "../../../public/img/main-logo.png";
 import { loginValidator } from "./validatorScheme";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
 const Login = () => {
   type FormProps = {
@@ -28,6 +30,10 @@ const Login = () => {
     console.log("função que efetua o login");
   }, []);
 
+  const handleShowPass = React.useCallback(() => {
+    setShowPass(!showPass);
+  }, [showPass]);
+
   const {
     register,
     handleSubmit,
@@ -36,79 +42,125 @@ const Login = () => {
 
   return (
     <>
-      <Flex flexDir="column" alignItems="center">
-        <Flex mt={204}>
-          <Image alt="main-logo" quality={100} src={mainLogo} />
-        </Flex>
-        <Box>
-          <Text
-            fontSize="24px"
-            fontFamily="Nunito Sans"
-            fontWeight={600}
-            mt={42}
-          >
-            Entrar na plataforma
-          </Text>
-          <Box as="form" onSubmit={handleSubmit(handleSignIn)} w="100%">
-            <FormControl fontFamily="Nunito Sans">
-              <FormLabel>Login</FormLabel>
-              <Input
-                placeholder="Digite seu e-mail"
-                autoFocus={true}
-                data-testid="input-login"
-                aria-label="Seu e-mail"
-                isInvalid={!!(errors.login && errors.login.message)}
-                {...register("login")}
-                color="#333333"
-              />
-              <FormErrorMessage>{errors?.login?.message}</FormErrorMessage>
-            </FormControl>
-            <FormControl fontFamily="Nunito Sans">
-              <FormLabel>Senha</FormLabel>
-              <Input
-                placeholder="Digite sua senha"
-                autoFocus={true}
-                data-testid="input-password"
-                aria-label="Seu e-mail"
-                isInvalid={!!(errors.password && errors.password.message)}
-                {...register("password")}
-                color="#333333"
-              />
-              <InputRightElement m={{ base: 0, sm: 2 }}>
-                <IconButton
-                  /*  onClick={handleShowPass} */
-                  aria-label="Exibir/Ocultar Senha"
-                  borderRadius="full"
-                  icon={
-                    showPass ? (
-                      <VisiblePassword color="#043C68" />
-                    ) : (
-                      <HiddenPassword color="#043C68" />
-                    )
-                  }
+      <Box
+        position="sticky"
+        w="894px"
+        h="1080px"
+        m="auto"
+        backgroundColor="#FFFFFF"
+        zIndex={999}
+      >
+        <Flex flexDir="column" alignItems="center">
+          <Flex mt={204}>
+            <Image alt="main-logo" quality={100} src={mainLogo} />
+          </Flex>
+          <Box>
+            <Text
+              fontSize="24px"
+              fontFamily="Nunito Sans"
+              fontWeight={600}
+              mt={42}
+              textAlign="center"
+            >
+              Entrar na plataforma
+            </Text>
+            <Box
+              mt="65px"
+              as="form"
+              onSubmit={handleSubmit(handleSignIn)}
+              w="100%"
+              color="#333333"
+            >
+              <FormControl fontFamily="Nunito Sans !important">
+                <FormLabel
+                  fontFamily="Ubuntu"
+                  fontSize="18px"
+                  fontWeight={400}
+                  ml="10px"
+                  mb="4px"
+                >
+                  E-mail
+                </FormLabel>
+                <Input
+                  variant="loginVariant"
+                  backgroundColor="#F3F5F6"
+                  placeholder="Digite seu e-mail"
+                  autoFocus={true}
+                  data-testid="input-login"
+                  aria-label="Seu e-mail"
+                  isInvalid={!!(errors.login && errors.login.message)}
+                  {...register("login")}
                 />
-              </InputRightElement>
-              <FormErrorMessage>{errors?.password?.message}</FormErrorMessage>
-            </FormControl>
-            <Button
-              height="48px"
-              background="#183B65"
-              borderRadius="24px"
-              padding="12px 24px"
-              color="#5A4CA7"
-              fontWeight="600"
-              fontSize="16px"
-              lineHeight="150%"
-              width="100%"
-              size="lg"
-              type="submit"
-              loadingText="Entrando..."
-              aria-label="Login na Conta Justa Web"
-              data-testid="submit"
-            />
+                <FormErrorMessage>{errors?.login?.message}</FormErrorMessage>
+              </FormControl>
+              <FormControl fontFamily="Nunito Sans">
+                <FormLabel
+                  fontFamily="Ubuntu"
+                  fontSize="18px"
+                  fontWeight={400}
+                  ml="10px"
+                  mt="40px"
+                  mb="4px"
+                >
+                  Senha
+                </FormLabel>
+                <InputGroup size="lg">
+                  <Input
+                    variant="loginVariant"
+                    backgroundColor="#F3F5F6"
+                    placeholder="Digite sua senha"
+                    autoFocus={true}
+                    data-testid="input-password"
+                    size="lg"
+                    type={showPass ? "text" : "password"}
+                    aria-label="Seu e-mail"
+                    isInvalid={!!(errors.password && errors.password.message)}
+                    {...register("password")}
+                  />
+                  <InputRightElement m={{ base: 0, sm: 2 }}>
+                    <IconButton
+                      mb="14px"
+                      ml="16px"
+                      onClick={handleShowPass}
+                      aria-label="Exibir/Ocultar Senha"
+                      borderRadius="full"
+                      icon={
+                        showPass ? (
+                          <ViewIcon color="#043C68" />
+                        ) : (
+                          <ViewOffIcon color="#043C68" />
+                        )
+                      }
+                    />
+                  </InputRightElement>
+                </InputGroup>
+
+                <FormErrorMessage>{errors?.password?.message}</FormErrorMessage>
+              </FormControl>
+              <Box w="100%" display="flex" justifyContent="center">
+                <Button
+                  alignItems="center"
+                  mt="48px"
+                  height="40px"
+                  w="120px"
+                  background="#5A4CA7"
+                  color="#FFFFFF"
+                  borderRadius="8px"
+                  fontFamily="Ubuntu"
+                  fontWeight="600"
+                  fontSize="20px"
+                  type="submit"
+                  loadingText="Entrando..."
+                  aria-label="Login na plataforma"
+                  data-testid="submit"
+                >
+                  Entrar
+                </Button>
+              </Box>
+            </Box>
           </Box>
-        </Box>
-      </Flex>
+        </Flex>
+      </Box>
     </>
   );
 };
