@@ -3,10 +3,15 @@ import Image from "next/image";
 import React from "react";
 import cuverPatterns from "../../../public/img/curve-patterns.png";
 
+/* type Props = {
+  children: React.ReactNode;
+}; */
+
 const MainLayout = () => {
   return (
-    <Box w="100%" position="absolute">
-      <Image src={cuverPatterns} alt="background-image" />
+    <Box w="100%" position="absolute" opacity="0.8">
+      <Image src={cuverPatterns} alt="background-image" priority />
+      <Box w="100%" maxW={1920}></Box>
     </Box>
   );
 };
