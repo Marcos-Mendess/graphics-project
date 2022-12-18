@@ -1,65 +1,76 @@
-export const MENU_LIST = [
+import CardIcon from "../components/icons/Card";
+import HomeIcon from "../components/icons/Card";
+import CategoryIcon from "../components/icons/Category";
+import GearIcon from "../components/icons/Gear";
+import LogisticsIcon from "../components/icons/Logistics";
+import PersonIcon from "../components/icons/Person";
+import ServicesIcon from "../components/icons/Services";
+import ShopCartIcon from "../components/icons/ShopCart";
+import TextIcon from "../components/icons/Text";
+import { MenuLinksModel } from "../types/menu";
+
+export const MENU_LIST: MenuLinksModel[] = [
   {
     id: "dashboard",
     name: "Painel",
     to: "/painel",
     testeId: "sidenav-dashboard",
-    Icon: FaChartPie,
+    Icon: HomeIcon,
   },
   {
     id: "dashboard",
     name: "Painel",
-    to: "/painel",
+    to: "/categories",
     testeId: "sidenav-dashboard",
-    Icon: FaChartPie,
+    Icon: CategoryIcon,
   },
   {
     id: "dashboard",
     name: "Painel",
-    to: "/painel",
+    to: "/services",
     testeId: "sidenav-dashboard",
-    Icon: FaChartPie,
+    Icon: ServicesIcon,
   },
   {
     id: "dashboard",
     name: "Painel",
-    to: "/painel",
+    to: "/logistics",
     testeId: "sidenav-dashboard",
-    Icon: FaChartPie,
+    Icon: LogisticsIcon,
   },
   {
     id: "dashboard",
     name: "Painel",
-    to: "/painel",
+    to: "/shop",
     testeId: "sidenav-dashboard",
-    Icon: FaChartPie,
+    Icon: ShopCartIcon,
   },
   {
     id: "dashboard",
     name: "Painel",
-    to: "/painel",
+    to: "/card",
     testeId: "sidenav-dashboard",
-    Icon: FaChartPie,
+    Icon: CardIcon,
   },
   {
     id: "dashboard",
     name: "Painel",
-    to: "/painel",
+    to: "/text",
     testeId: "sidenav-dashboard",
-    Icon: FaChartPie,
+    Icon: TextIcon,
   },
   {
     id: "dashboard",
     name: "Painel",
-    to: "/painel",
+    to: "/person",
     testeId: "sidenav-dashboard",
-    Icon: FaChartPie,
+    Icon: PersonIcon,
   },
   {
     id: "dashboard",
     name: "Painel",
-    to: "/painel",
+    to: "/gear",
     testeId: "sidenav-dashboard",
-    Icon: FaChartPie,
+    Icon: GearIcon,
   },
 ];

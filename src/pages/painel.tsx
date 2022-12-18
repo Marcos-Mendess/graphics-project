@@ -1,8 +1,8 @@
-import { Box } from "@chakra-ui/react";
 import React from "react";
+import MainLayout from "../layout/Auth/MainLayout";
 
 const painel = () => {
-  return <Box>painel</Box>;
+  return <MainLayout></MainLayout>;
 };
 
 export default painel;
