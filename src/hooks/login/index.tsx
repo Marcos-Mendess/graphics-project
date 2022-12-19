@@ -1,10 +1,10 @@
-import { useQuery, useMutation } from "react-query";
+import { useMutation } from "react-query";
 import { useToast } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { AxiosError } from "axios";
 import { loginOauth } from "../../services/auth";
 import { Oauth } from "../../types/login";
-import React from "react";
+import { setCookie } from "nookies";
 
 export const useLogin = () => {
   const toast = useToast();
@@ -14,7 +14,12 @@ export const useLogin = () => {
     "login",
     (payload: Oauth) => loginOauth(payload as Oauth),
     {
-      onSuccess: () => {
+      onSuccess: (data) => {
+        const maxAge = 86400000;
+        setCookie(null, "authToken", data?.accessToken, {
+          maxAge,
+          path: "/",
+        });
         router.push("/painel");
       },
       onError: (error: AxiosError) => {
