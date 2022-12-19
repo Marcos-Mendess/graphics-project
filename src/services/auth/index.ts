@@ -26,14 +26,40 @@ export async function loginOauth({ email, password }: Oauth) {
 }
 
 /**
- * Serviço para retornar imagem de avatar
+ * Serviço responsável por retornar imagem de avatar
  */
 export async function getAvatarImage() {
   const response = await axios.get<AvatarImage>(
     `https://628bf017667aea3a3e387e51.mockapi.io/me`
   );
   if (response?.status !== 200) {
-    throw new Error("ocorreu algum erro");
+    throw new Error("Ocorreu algum erro");
+  }
+  return response?.data;
+}
+
+/**
+ * Serviço responsável por retornar ticket médio diário
+ */
+export async function getAverageDiaryTicket() {
+  const response = await axios.get<AvatarImage>(
+    `https://628bf017667aea3a3e387e51.mockapi.io/avg-ticket-day`
+  );
+  if (response?.status !== 200) {
+    throw new Error("Ocorreu algum erro");
+  }
+  return response?.data;
+}
+
+/**
+ * Serviço responsável por retornar ticket médio mensal
+ */
+export async function getAverageMonthTicket() {
+  const response = await axios.get<AvatarImage>(
+    `https://628bf017667aea3a3e387e51.mockapi.io/avg-ticket-day`
+  );
+  if (response?.status !== 200) {
+    throw new Error("Ocorreu algum erro");
   }
   return response?.data;
 }
