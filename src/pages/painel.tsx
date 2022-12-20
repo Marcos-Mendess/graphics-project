@@ -10,10 +10,6 @@ const Painel = () => {
 
   const { data, isLoading } = useGetAvatarImage();
 
-  React.useEffect(() => {
-    console.log(selectedOptions);
-  }, [selectedOptions]);
-
   return (
     <>
       <Header data={data as AvatarImage} isLoading={isLoading} />

@@ -1,14 +1,39 @@
 import { Flex, HStack, Text } from "@chakra-ui/react";
 import React from "react";
-import MonetaryCard from "../MonetaryCard";
+import {
+  useGetAverageDiaryTicket,
+  useGetAverageMonthTicket,
+  useGetCanceledOrdersByMonth,
+  useGetConversionResume,
+  useGetExpectedProfitPerMonth,
+  useGetMaintenanceAlerts,
+  useGetOrdersDoneByMonth,
+  useGetOrdersPerMonth,
+  useGetProducts,
+  useGetProfileDataUser,
+  useGetRealProfitPerMonth,
+  useGetSellsByMonth,
+  useGetSellsPerMonth,
+} from "../../hooks/dashboard";
+import Card from "../Card";
 
 const DashBoard = () => {
-  React.useEffect(() => {
-    console.log("entrou");
-  });
+  const { data: averageDailyTicket } = useGetAverageDiaryTicket();
+  const { data: averageMonthlyTicket } = useGetAverageMonthTicket();
+  const { data: alertData } = useGetMaintenanceAlerts();
+  const { data: ordersDoneByMonth } = useGetOrdersDoneByMonth();
+  const { data: sellsByMonth } = useGetSellsByMonth();
+  const { data: sellPerMonth } = useGetSellsPerMonth();
+  const { data: ordersPerMonth } = useGetOrdersPerMonth();
+  const { data: expectedProfitPerMonth } = useGetExpectedProfitPerMonth();
+  const { data: realProfitPerMonth } = useGetRealProfitPerMonth();
+  const { data: canceledOrdersByMonth } = useGetCanceledOrdersByMonth();
+  const { data: profileDataUser } = useGetProfileDataUser();
+  const { data: conversionResume } = useGetConversionResume();
+  /* const { data: products } = useGetProducts(); */
+
   return (
     <Flex
-      color="red"
       maxW="100%"
       minW="90vw"
       minH="90vh"
@@ -24,8 +49,9 @@ const DashBoard = () => {
         </Text>
       </Flex>
       <HStack spacing={3}>
-        <MonetaryCard />
-        <MonetaryCard />
+        <Card monetary daily data={averageDailyTicket} />
+        <Card monetary monthly data={averageMonthlyTicket} />
+        <Card product title="Produtos em manutenção" />
       </HStack>
     </Flex>
   );
