@@ -15,7 +15,7 @@ import { ServicesList, SideNavOptions } from "../types/menu";
 /** Função responsável por renderizar determinado componente
  * segundo a escolha na sidebar
  */
-export const showServiceByOptions = (option: SideNavOptions) => {
+export const showServicesByOptions = (option: SideNavOptions) => {
   switch (option) {
     case SideNavOptions.HOME:
       return <DashBoard />;

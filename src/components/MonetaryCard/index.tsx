@@ -31,9 +31,9 @@ const MonetaryCard = () => {
       <Text color="#109E8E" fontSize="16px" mt="10px">
         em relação a ontem
       </Text>
-      <Text fontSize="18px" color="#4E5D66" mt="8px">
+      <Text fontSize="16px" color="#4E5D66" mt="8px">
         R${" "}
-        <Text as="span" fontSize="24px" ml="8px">
+        <Text as="span" fontSize="20px" ml="8px" fontWeight="bold">
           {" "}
           {numero.replace(".", ",")}
         </Text>

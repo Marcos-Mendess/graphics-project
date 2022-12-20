@@ -36,6 +36,7 @@ const NavItem = ({
             background={selected && !disabled ? "#5A4CA7" : "inherit"}
             color={selected ? "#FFF" : "#4e5d66"}
             borderRadius={6}
+            transition=".1s ease"
           >
             <Flex>
               <Icon boxSize="40px" viewBox="0 0 40 40" as={icon} />

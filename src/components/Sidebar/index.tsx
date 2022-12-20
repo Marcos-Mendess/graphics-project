@@ -3,7 +3,7 @@ import { Divider, Flex, IconButton } from "@chakra-ui/react";
 import NavItem from "../NavItem";
 import MenuIcon from "../icons/Menu";
 import { SideNavOptions } from "../../types/menu";
-import { SERVICES_LIST, showServiceByOptions } from "../../static";
+import { SERVICES_LIST, showServicesByOptions } from "../../static";
 
 type Props = {
   handleSelectedOptions: (option: SideNavOptions) => void;
@@ -12,7 +12,6 @@ type Props = {
 
 const SideBar = ({ selectedOptions, handleSelectedOptions }: Props) => {
   const [navSize, changeNavSize] = React.useState("large");
-
   return (
     <>
       <Flex
@@ -23,6 +22,7 @@ const SideBar = ({ selectedOptions, handleSelectedOptions }: Props) => {
         w={navSize == "large" ? "88px" : "200px "}
         justifyContent="space-between"
         data-testid="sidenavbar-container"
+        transition=".3s ease"
       >
         <Flex
           p="5%"
@@ -36,8 +36,9 @@ const SideBar = ({ selectedOptions, handleSelectedOptions }: Props) => {
           mr="10px"
         >
           <Flex
-            justifyContent="center"
+            justifyContent="center !important"
             w={navSize == "large" ? "88px" : "200px "}
+            transition=".2s ease"
           >
             <IconButton
               background="none"
@@ -66,10 +67,13 @@ const SideBar = ({ selectedOptions, handleSelectedOptions }: Props) => {
             );
           })}
         </Flex>
-        <Flex w="100%">{showServiceByOptions(selectedOptions)}</Flex>
+        <Flex w="100%">{showServicesByOptions(selectedOptions)}</Flex>
       </Flex>
     </>
   );
 };
 
 export default SideBar;
+
+{
+}
