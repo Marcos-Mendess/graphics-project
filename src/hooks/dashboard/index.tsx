@@ -22,6 +22,12 @@ export const useGetAvatarImage = () => {
   const toast = useToast();
 
   return useQuery(["avatar"], () => getAvatarImage(), {
+    staleTime: Infinity,
+    cacheTime: Infinity,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+    retry: false,
     onError: () => {
       toast({
         title: "Erro ao carregar imagem de perfil!",
@@ -38,6 +44,12 @@ export const useGetAverageDiaryTicket = () => {
   const toast = useToast();
 
   return useQuery(["ticket-diary"], () => getAverageDiaryTicket(), {
+    staleTime: Infinity,
+    cacheTime: Infinity,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+    retry: false,
     onError: () => {
       toast({
         title: "Erro ao carregar ticket médio diário",
@@ -55,6 +67,13 @@ export const useGetAverageMonthTicket = () => {
   const toast = useToast();
 
   return useQuery(["ticket-monthly"], () => getAverageMonthTicket(), {
+    staleTime: Infinity,
+    cacheTime: Infinity,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+    retry: false,
+
     onError: () => {
       toast({
         title: "Erro ao carregar ticket médio mensal",
@@ -72,6 +91,13 @@ export const useGetMaintenanceAlerts = () => {
   const toast = useToast();
 
   return useQuery(["maintenance"], () => getMaintenanceAlerts(), {
+    staleTime: Infinity,
+    cacheTime: Infinity,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+    retry: false,
+
     onError: () => {
       toast({
         title: "Erro ao carregar informações de manutenção",
@@ -88,6 +114,13 @@ export const useGetOrdersDoneByMonth = () => {
   const toast = useToast();
 
   return useQuery(["orders-done"], () => getOrdersDoneByMonth(), {
+    staleTime: Infinity,
+    cacheTime: Infinity,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+    retry: false,
+
     onError: () => {
       toast({
         title: "Erro ao carregar número de pedidos por mês",
@@ -105,6 +138,13 @@ export const useGetSellsByMonth = () => {
   const toast = useToast();
 
   return useQuery(["sells-by-month"], () => getSellsByMonth(), {
+    staleTime: Infinity,
+    cacheTime: Infinity,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+    retry: false,
+
     onError: () => {
       toast({
         title: "Erro ao carregar vendas mensais",
@@ -122,6 +162,13 @@ export const useGetSellsPerMonth = () => {
   const toast = useToast();
 
   return useQuery(["sells-per-month"], () => getSellsPerMonth(), {
+    staleTime: Infinity,
+    cacheTime: Infinity,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+    retry: false,
+
     onError: () => {
       toast({
         title: "Erro ao carregar vendas por mês",
@@ -139,6 +186,13 @@ export const useGetOrdersPerMonth = () => {
   const toast = useToast();
 
   return useQuery(["orders-month"], () => getOrdersPerMonth(), {
+    staleTime: Infinity,
+    cacheTime: Infinity,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+    retry: false,
+
     onError: () => {
       toast({
         title: "Erro ao carregar pedidos por mês",
@@ -156,6 +210,13 @@ export const useGetExpectedProfitPerMonth = () => {
   const toast = useToast();
 
   return useQuery(["expected-profit"], () => getExpectedProfitPerMonth(), {
+    staleTime: Infinity,
+    cacheTime: Infinity,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+    retry: false,
+
     onError: () => {
       toast({
         title: "Erro ao carregar lucro esperado mensal",
@@ -173,6 +234,13 @@ export const useGetRealProfitPerMonth = () => {
   const toast = useToast();
 
   return useQuery(["real-profit"], () => getRealProfitPerMonth(), {
+    staleTime: Infinity,
+    cacheTime: Infinity,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+    retry: false,
+
     onError: () => {
       toast({
         title: "Erro ao carregar lucro real mensal",
@@ -193,6 +261,13 @@ export const useGetCanceledOrdersByMonth = () => {
     ["canceled-orders"],
     () => getExpectedCanceledOrdersByMonth(),
     {
+      staleTime: Infinity,
+      cacheTime: Infinity,
+      refetchOnMount: false,
+      refetchOnWindowFocus: false,
+      refetchOnReconnect: false,
+      retry: false,
+
       onError: () => {
         toast({
           title: "Erro ao carregar pedidos cancelados",
@@ -211,6 +286,13 @@ export const useGetProfileDataUser = () => {
   const toast = useToast();
 
   return useQuery(["users"], () => getProfileDataUser(), {
+    staleTime: Infinity,
+    cacheTime: Infinity,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+    retry: false,
+
     onError: () => {
       toast({
         title: "Erro ao carregar informações",
@@ -228,6 +310,13 @@ export const useGetConversionResume = () => {
   const toast = useToast();
 
   return useQuery(["conversion"], () => getConversionResume(), {
+    staleTime: Infinity,
+    cacheTime: Infinity,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+    retry: false,
+
     onError: () => {
       toast({
         title: "Erro ao carregar informações de conversão",
@@ -247,6 +336,8 @@ export const useGetProducts = (currentPage: number, searchOption: string) => {
   const search = React.useMemo(() => searchOption, [searchOption]);
 
   return useQuery(["products", page, search], () => getProducts(page, search), {
+    refetchOnWindowFocus: false,
+
     onError: () => {
       toast({
         title: "Erro ao carregar a listagem dos produtos",

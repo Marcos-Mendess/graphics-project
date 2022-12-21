@@ -70,7 +70,6 @@ const Login = () => {
   const handleSignIn = React.useCallback(async () => {
     if (payload) {
       const mutationResponse = await mutation.mutateAsync(payload as Oauth);
-      console.log(mutationResponse.accessToken);
     }
   }, [payload, mutation]);
 

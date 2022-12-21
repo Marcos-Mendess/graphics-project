@@ -1,4 +1,4 @@
-import { Flex, Tag, Text } from "@chakra-ui/react";
+import { Flex, HStack, Tag, Text } from "@chakra-ui/react";
 import React from "react";
 import { TicketResponse } from "../../types/menu";
 import { getLastMonth } from "../../utils";
@@ -7,9 +7,10 @@ type Props = {
   data: TicketResponse;
   daily?: boolean;
   monthly?: boolean;
+  orders?: boolean;
 };
 
-const MonetaryCard = ({ data, daily, monthly }: Props) => {
+const ProductCard = ({ data, daily, monthly, orders }: Props) => {
   const lastMonth = getLastMonth();
 
   const value = React.useMemo(() => {
@@ -43,12 +44,17 @@ const MonetaryCard = ({ data, daily, monthly }: Props) => {
     >
       {daily ? (
         <Text color="#4E5D66" fontWeight="bold">
-          Ticket médio últimas 24h
+          Pedidos realizados nas últimas 24h
         </Text>
       ) : null}
-      {monthly ? (
+      {monthly && !orders ? (
         <Text color="#4E5D66" fontWeight="bold">
-          Ticket médio mensal
+          Pedidos realizados no mês
+        </Text>
+      ) : null}
+      {orders ? (
+        <Text color="#4E5D66" fontWeight="bold">
+          Produtos vendidos no mês
         </Text>
       ) : null}
       {percentageValue ? (
@@ -84,17 +90,16 @@ const MonetaryCard = ({ data, daily, monthly }: Props) => {
         </Text>
       ) : null}
 
-      <Text fontSize="16px" color="#4E5D66" mt="8px">
-        R${" "}
-        {value ? (
-          <Text as="span" fontSize="20px" ml="8px" fontWeight="bold">
-            {" "}
-            {value}
-          </Text>
-        ) : null}
-      </Text>
+      <HStack mt="10px">
+        <Text fontSize="20px" fontWeight="bold" color="#4E5D66">
+          {value}
+        </Text>
+        <Text fontSize="16px" fontWeight="normal" color="#4E5D66" ml="8px">
+          produtos
+        </Text>
+      </HStack>
     </Flex>
   );
 };
 
-export default MonetaryCard;
+export default ProductCard;

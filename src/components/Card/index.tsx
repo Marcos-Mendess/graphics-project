@@ -26,10 +26,6 @@ const Card = ({
   const porcentage = "+ 15 %";
   const lastMonth = getLastMonth();
 
-  React.useEffect(() => {
-    console.log(data);
-  }, [data]);
-
   return (
     <>
       {monetary ? (
@@ -60,16 +56,17 @@ const Card = ({
             bg="#FFFFFF 0% 0% no-repeat padding-box"
             borderRadius="12px"
             color="#109E8E"
+            fontSize="12px"
           >
             {porcentage}
           </Tag>
           {daily ? (
-            <Text color="#109E8E" fontSize="16px" mt="10px">
+            <Text color="#109E8E" fontSize="14px" mt="10px">
               em relação a ontem
             </Text>
           ) : null}
           {monthly ? (
-            <Text color="#109E8E" fontSize="16px" mt="10px">
+            <Text color="#109E8E" fontSize="14px" mt="10px">
               em relação a {lastMonth}
             </Text>
           ) : null}
@@ -120,12 +117,12 @@ const Card = ({
             {porcentage}
           </Tag>
           {daily ? (
-            <Text color="#109E8E" fontSize="16px" mt="10px">
+            <Text color="#109E8E" fontSize="14px" mt="10px">
               em relação a ontem
             </Text>
           ) : null}
           {monthly ? (
-            <Text color="#109E8E" fontSize="16px" mt="10px">
+            <Text color="#109E8E" fontSize="14px" mt="10px">
               em relação a {lastMonth}
             </Text>
           ) : null}
@@ -172,12 +169,12 @@ const Card = ({
             {porcentage}
           </Tag>
           {daily ? (
-            <Text color="#109E8E" fontSize="16px" mt="10px">
+            <Text color="#109E8E" fontSize="14px" mt="10px">
               em relação a ontem
             </Text>
           ) : null}
           {monthly ? (
-            <Text color="#109E8E" fontSize="16px" mt="10px">
+            <Text color="#109E8E" fontSize="14px" mt="10px">
               em relação a {lastMonth}
             </Text>
           ) : null}

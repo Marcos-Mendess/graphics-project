@@ -51,7 +51,7 @@ export async function getAverageMonthTicket() {
  * Serviço responsável por retornar número de produtos em manutenção
  */
 export async function getMaintenanceAlerts() {
-  const response = await axios.get<AlertResponse>(
+  const response = await axios.get<AlertResponse[]>(
     `https://628bf017667aea3a3e387e51.mockapi.io/alerts`
   );
   if (response?.status !== 200) {

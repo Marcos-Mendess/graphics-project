@@ -9,7 +9,7 @@ import cuverPatterns from "../../../public/img/curve-patterns.png";
 
 const MainLayout = () => {
   return (
-    <Box w="100%" position="absolute" opacity="0.8">
+    <Box w="100%" position="absolute" opacity="0.6">
       <Image src={cuverPatterns} alt="background-image" priority />
       <Box w="100%" maxW={1920}></Box>
     </Box>
