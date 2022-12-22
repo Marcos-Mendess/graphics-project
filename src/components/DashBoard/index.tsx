@@ -1,20 +1,15 @@
 import { Box, Flex, Spinner } from "@chakra-ui/react";
 import React from "react";
-import {
-  useGetConversionResume,
-  useGetProfileDataUser,
-} from "../../hooks/dashboard";
-import SectionTitle from "../Helpers/SectionTitle";
+import { useGetConversionResume } from "../../hooks/dashboard";
 import SalesDashBoard from "../SalesDashBoard";
 import InitialCardContainer from "../InitialCardContainer";
 import MiddleCardContainer from "../MiddleCardContainer";
 import PersonalInfoDashBoard from "../PersonalInfoDashBoard";
+import Table from "../Table";
 
 const DashBoard = () => {
   /** Hooks */
-
-  const { data: profileDataUser } = useGetProfileDataUser();
-  const { data: conversionResume, isLoading } = useGetConversionResume();
+  const { isLoading } = useGetConversionResume();
   /* const { data: products } = useGetProducts(); */
 
   return (
@@ -42,6 +37,7 @@ const DashBoard = () => {
           <SalesDashBoard />
           <MiddleCardContainer />
           <PersonalInfoDashBoard />
+          <Table />
         </Box>
       )}
     </Flex>

@@ -13,7 +13,7 @@ const Painel = () => {
   const { data, isLoading } = useGetAvatarImage();
 
   return (
-    <Box display="flex" overflowY="hidden" overflowX="hidden">
+    <Box display="flex" overflow="hidden">
       <MainLayout>
         <Header data={data as AvatarImage} isLoading={isLoading} />
         <SideBar

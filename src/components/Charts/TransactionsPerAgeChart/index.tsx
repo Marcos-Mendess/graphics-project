@@ -13,14 +13,14 @@ const TransactionsPerAgeChart = () => {
   const { data: profileDataUser } = useGetProfileDataUser();
 
   const transactionsPerAgeRange = React.useMemo(() => {
-    if (profileDataUser)
+    if (profileDataUser && profileDataUser["transactions-per-age"])
       return createAgeCategoriesArray(
         profileDataUser["transactions-per-age"]
       ).reverse();
   }, [profileDataUser]);
 
   const chartValues = React.useMemo(() => {
-    if (profileDataUser)
+    if (profileDataUser && profileDataUser["transactions-per-age"])
       return createChartValueArray(
         profileDataUser["transactions-per-age"]
       ).reverse();
@@ -111,13 +111,15 @@ const TransactionsPerAgeChart = () => {
       px="20px"
       borderRadius="12px"
     >
-      <Chart
-        width="608px"
-        height="400px"
-        type="bar"
-        options={options}
-        series={series}
-      ></Chart>
+      {profileDataUser ? (
+        <Chart
+          width="608px"
+          height="400px"
+          type="bar"
+          options={options}
+          series={series}
+        ></Chart>
+      ) : null}
     </Flex>
   );
 };

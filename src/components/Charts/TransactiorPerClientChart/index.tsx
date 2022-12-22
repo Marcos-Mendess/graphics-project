@@ -82,13 +82,15 @@ const TransactiorPerClientChart = () => {
       borderRadius="12px"
       ml="32px"
     >
-      <Chart
-        width="539px"
-        height="400px"
-        type="donut"
-        options={options}
-        series={newValues}
-      ></Chart>
+      {options && newValues ? (
+        <Chart
+          width="539px"
+          height="400px"
+          type="donut"
+          options={options}
+          series={newValues}
+        ></Chart>
+      ) : null}
     </Flex>
   );
 };

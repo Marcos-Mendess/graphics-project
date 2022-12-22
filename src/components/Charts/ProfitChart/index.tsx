@@ -1,34 +1,37 @@
 import { Flex } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
 import React from "react";
+import {
+  useGetExpectedProfitPerMonth,
+  useGetRealProfitPerMonth,
+} from "../../../hooks/dashboard";
 import { months } from "../../../static";
-import { OrdersByMonthDashboard } from "../../../types/menu";
 import { createChartValueArray } from "../../../utils";
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-type Props = {
-  expectedProfit: OrdersByMonthDashboard[];
-  realProfit: OrdersByMonthDashboard[];
-};
+const ProfitChart = () => {
+  /** Hooks */
+  const { data: expectedProfitPerMonth } = useGetExpectedProfitPerMonth();
+  const { data: realProfitPerMonth } = useGetRealProfitPerMonth();
 
-const ProfitChart = ({ expectedProfit, realProfit }: Props) => {
   const expectedValues = React.useMemo(() => {
-    return createChartValueArray(expectedProfit);
-  }, [expectedProfit]);
+    if (expectedProfitPerMonth)
+      return createChartValueArray(expectedProfitPerMonth);
+  }, [expectedProfitPerMonth]);
 
   const realValues = React.useMemo(() => {
-    return createChartValueArray(realProfit);
-  }, [realProfit]);
+    if (realProfitPerMonth) return createChartValueArray(realProfitPerMonth);
+  }, [realProfitPerMonth]);
 
   const series = [
     {
       name: "Lucro esperado",
-      data: expectedValues,
+      data: expectedValues as number[],
     },
     {
       name: "Lucro real",
-      data: realValues,
+      data: realValues as number[],
     },
   ];
 
@@ -109,13 +112,15 @@ const ProfitChart = ({ expectedProfit, realProfit }: Props) => {
       px="20px"
       borderRadius="12px"
     >
-      <Chart
-        width="608px"
-        height="400px"
-        type="bar"
-        options={options}
-        series={series}
-      ></Chart>
+      {realProfitPerMonth && expectedProfitPerMonth ? (
+        <Chart
+          width="608px"
+          height="400px"
+          type="bar"
+          options={options}
+          series={series}
+        ></Chart>
+      ) : null}
     </Flex>
   );
 };

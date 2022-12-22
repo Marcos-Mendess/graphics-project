@@ -1,37 +1,37 @@
 import { Flex } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
 import React from "react";
+import {
+  useGetCanceledOrdersByMonth,
+  useGetOrdersPerMonth,
+} from "../../../hooks/dashboard";
 import { months } from "../../../static";
-import { OrdersByMonthDashboard } from "../../../types/menu";
 import { createChartValueArray } from "../../../utils";
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-type Props = {
-  ordersPerMonth: OrdersByMonthDashboard[];
-  canceledOrdersByMonth: OrdersByMonthDashboard[];
-};
+const CanceledOrdersChart = () => {
+  /** Hooks */
+  const { data: ordersPerMonth } = useGetOrdersPerMonth();
+  const { data: canceledOrdersByMonth } = useGetCanceledOrdersByMonth();
 
-const CanceledOrdersChart = ({
-  ordersPerMonth,
-  canceledOrdersByMonth,
-}: Props) => {
   const canceledOrders = React.useMemo(() => {
-    return createChartValueArray(canceledOrdersByMonth);
+    if (canceledOrdersByMonth)
+      return createChartValueArray(canceledOrdersByMonth);
   }, [canceledOrdersByMonth]);
 
   const ordersPlaced = React.useMemo(() => {
-    return createChartValueArray(ordersPerMonth);
+    if (ordersPerMonth) return createChartValueArray(ordersPerMonth);
   }, [ordersPerMonth]);
 
   const series = [
     {
       name: "Realizados",
-      data: canceledOrders,
+      data: canceledOrders as number[],
     },
     {
       name: "Cancelados",
-      data: ordersPlaced,
+      data: ordersPlaced as number[],
     },
   ];
 
@@ -103,13 +103,15 @@ const CanceledOrdersChart = ({
       px="20px"
       borderRadius="12px"
     >
-      <Chart
-        width="608px"
-        height="400px"
-        type="bar"
-        options={options}
-        series={series}
-      ></Chart>
+      {ordersPerMonth && canceledOrdersByMonth ? (
+        <Chart
+          width="608px"
+          height="400px"
+          type="bar"
+          options={options}
+          series={series}
+        ></Chart>
+      ) : null}
     </Flex>
   );
 };

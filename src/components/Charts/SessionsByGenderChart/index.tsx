@@ -67,13 +67,15 @@ const SessionsByGenderChart = () => {
       borderRadius="12px"
       ml="32px"
     >
-      <Chart
-        width="539px"
-        height="400px"
-        type="donut"
-        options={options}
-        series={series}
-      ></Chart>
+      {profileDataUser ? (
+        <Chart
+          width="539px"
+          height="400px"
+          type="donut"
+          options={options}
+          series={series}
+        ></Chart>
+      ) : null}
     </Flex>
   );
 };

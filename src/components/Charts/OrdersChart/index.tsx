@@ -1,25 +1,24 @@
 import { Flex } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
 import React from "react";
+import { useGetSellsPerMonth } from "../../../hooks/dashboard";
 import { months } from "../../../static";
-import { OrdersByMonthDashboard } from "../../../types/menu";
 import { createChartValueArray } from "../../../utils";
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-type Props = {
-  data: OrdersByMonthDashboard[];
-};
+const OrdersChart = () => {
+  /** Hooks */
+  const { data } = useGetSellsPerMonth();
 
-const OrdersChart = ({ data }: Props) => {
   const chartValues = React.useMemo(() => {
-    return createChartValueArray(data);
+    if (data) return createChartValueArray(data);
   }, [data]);
 
   const series = [
     {
       name: "Pedidos",
-      data: chartValues,
+      data: chartValues as number[],
     },
   ];
 
@@ -84,13 +83,15 @@ const OrdersChart = ({ data }: Props) => {
       px="20px"
       borderRadius="12px"
     >
-      <Chart
-        width="608px"
-        height="400px"
-        type="bar"
-        options={options}
-        series={series}
-      ></Chart>
+      {data ? (
+        <Chart
+          width="608px"
+          height="400px"
+          type="bar"
+          options={options}
+          series={series}
+        ></Chart>
+      ) : null}
     </Flex>
   );
 };
