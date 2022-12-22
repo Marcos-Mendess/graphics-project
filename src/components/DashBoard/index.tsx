@@ -7,7 +7,8 @@ import {
 import SectionTitle from "../Helpers/SectionTitle";
 import SalesDashBoard from "../SalesDashBoard";
 import InitialCardContainer from "../InitialCardContainer";
-import MainPageTitle from "../Helpers/MainPageTitle";
+import MiddleCardContainer from "../MiddleCardContainer";
+import PersonalInfoDashBoard from "../PersonalInfoDashBoard";
 
 const DashBoard = () => {
   /** Hooks */
@@ -37,14 +38,10 @@ const DashBoard = () => {
         </Flex>
       ) : (
         <Box overflowY="scroll" position="relative" h="85vh">
-          <MainPageTitle title="Início" />
           <InitialCardContainer />
-          <SectionTitle title="Dashboard de vendas" />
-          <Flex w="100%">
-            <SalesDashBoard />
-          </Flex>
-          <SectionTitle title="Funil de conversão" />
-          <InitialCardContainer />
+          <SalesDashBoard />
+          <MiddleCardContainer />
+          <PersonalInfoDashBoard />
         </Box>
       )}
     </Flex>

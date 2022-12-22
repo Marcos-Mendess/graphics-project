@@ -1,3 +1,4 @@
+import { Flex } from "@chakra-ui/react";
 import React from "react";
 import {
   useGetCanceledOrdersByMonth,
@@ -10,6 +11,7 @@ import { OrdersByMonthDashboard } from "../../types/menu";
 import CanceledOrdersChart from "../Charts/CanceledOrdersChart";
 import OrdersChart from "../Charts/OrdersChart";
 import ProfitChart from "../Charts/ProfitChart";
+import SectionTitle from "../Helpers/SectionTitle";
 
 const SalesDashBoard = () => {
   /** Hooks */
@@ -20,21 +22,24 @@ const SalesDashBoard = () => {
   const { data: canceledOrdersByMonth } = useGetCanceledOrdersByMonth();
   return (
     <>
-      {sellPerMonth ? (
-        <OrdersChart data={sellPerMonth as OrdersByMonthDashboard[]} />
-      ) : null}
-      {expectedProfitPerMonth && realProfitPerMonth ? (
-        <ProfitChart
-          expectedProfit={expectedProfitPerMonth}
-          realProfit={realProfitPerMonth}
-        />
-      ) : null}
-      {canceledOrdersByMonth && ordersPerMonth ? (
-        <CanceledOrdersChart
-          ordersPerMonth={ordersPerMonth}
-          canceledOrdersByMonth={canceledOrdersByMonth}
-        />
-      ) : null}
+      <SectionTitle title="Dashboard de vendas" />
+      <Flex w="100%">
+        {sellPerMonth ? (
+          <OrdersChart data={sellPerMonth as OrdersByMonthDashboard[]} />
+        ) : null}
+        {expectedProfitPerMonth && realProfitPerMonth ? (
+          <ProfitChart
+            expectedProfit={expectedProfitPerMonth}
+            realProfit={realProfitPerMonth}
+          />
+        ) : null}
+        {canceledOrdersByMonth && ordersPerMonth ? (
+          <CanceledOrdersChart
+            ordersPerMonth={ordersPerMonth}
+            canceledOrdersByMonth={canceledOrdersByMonth}
+          />
+        ) : null}
+      </Flex>
     </>
   );
 };

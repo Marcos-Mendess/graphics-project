@@ -109,3 +109,14 @@ export const months = [
   "NOV",
   "DEZ",
 ];
+
+export const TransactionRange = [
+  "0",
+  "500",
+  "1 MIL",
+  "1,5 MIL",
+  "2 MIL",
+  "2,5 MIL",
+  "3 MIL",
+  "3,5 MIL",
+];

@@ -1,4 +1,4 @@
-import { OrdersByMonthDashboard } from "../types/menu";
+import { OrdersByMonthDashboard, TransactionPerAge } from "../types/menu";
 
 export const currencyFormatter = (value: number, locale = "pt-BR"): string => {
   const options = { style: "currency", currency: "BRL" };
@@ -24,7 +24,9 @@ export const differenceInDaysBetweenTwoDates = (since: string) => {
   return (diffinSeconds / (1000 * 3600 * 24)).toFixed();
 };
 
-export const createChartValueArray = (data: OrdersByMonthDashboard[]) => {
+export const createChartValueArray = (
+  data: OrdersByMonthDashboard[] | TransactionPerAge[]
+) => {
   const categoriesArray: number[] = [];
   data.map((month) => {
     categoriesArray.push(month?.value);
@@ -38,3 +40,28 @@ export const formatter = new Intl.NumberFormat("pt-BR", {
   minimumFractionDigits: 2,
   maximumFractionDigits: 2,
 });
+
+export const createAgeCategoriesArray = (data: TransactionPerAge[]) => {
+  const ageCategoriesArray: string[] = [];
+  data.map((object) => {
+    ageCategoriesArray.push(object.category);
+  });
+  return ageCategoriesArray;
+};
+
+export const legendPipe = (value: string[]) => {
+  const newArray: string[] = [];
+  value.map((value) => {
+    switch (value) {
+      case "new":
+        newArray.push("Novo cliente");
+        return;
+      case "others":
+        newArray.push("Cliente retornando");
+        return;
+      default:
+        return;
+    }
+  });
+  return newArray;
+};

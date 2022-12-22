@@ -11,9 +11,9 @@ import {
   useGetOrdersDoneByMonth,
   useGetSellsByMonth,
 } from "../../hooks/dashboard";
-import MainPageTitle from "../Helpers/MainPageTitle";
+import SectionTitle from "../Helpers/SectionTitle";
 
-const InitialCardContainer = () => {
+const MiddleCardContainer = () => {
   /** Hooks */
   const { data: averageDailyTicket } = useGetAverageDiaryTicket();
   const { data: averageMonthlyTicket } = useGetAverageMonthTicket();
@@ -22,7 +22,7 @@ const InitialCardContainer = () => {
   const { data: sellsByMonth } = useGetSellsByMonth();
   return (
     <>
-      <MainPageTitle title="Início" />
+      <SectionTitle title="Funil de Conversão" />
 
       <HStack spacing={3} w="100%">
         <MonetaryCard data={averageDailyTicket as TicketResponse} daily />
@@ -39,4 +39,4 @@ const InitialCardContainer = () => {
   );
 };
 
-export default InitialCardContainer;
+export default MiddleCardContainer;
