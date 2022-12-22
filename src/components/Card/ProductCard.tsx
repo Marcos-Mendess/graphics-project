@@ -34,7 +34,7 @@ const ProductCard = ({ data, daily, monthly, orders }: Props) => {
 
   return (
     <Flex
-      w="232px"
+      w="250px"
       h="168px"
       borderRadius="15px"
       bg="#FFFFFF 0% 0% no-repeat padding-box"
@@ -90,7 +90,7 @@ const ProductCard = ({ data, daily, monthly, orders }: Props) => {
         </Text>
       ) : null}
 
-      <HStack mt="10px">
+      <HStack mt="8px">
         <Text fontSize="20px" fontWeight="bold" color="#4E5D66">
           {value}
         </Text>

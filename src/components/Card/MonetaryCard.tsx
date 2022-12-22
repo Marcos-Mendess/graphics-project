@@ -1,7 +1,7 @@
 import { Flex, Tag, Text } from "@chakra-ui/react";
 import React from "react";
 import { TicketResponse } from "../../types/menu";
-import { getLastMonth } from "../../utils";
+import { formatter, getLastMonth } from "../../utils";
 
 type Props = {
   data: TicketResponse;
@@ -14,8 +14,10 @@ const MonetaryCard = ({ data, daily, monthly }: Props) => {
 
   const value = React.useMemo(() => {
     if (data) {
-      const valueString = data?.value.toString();
-      return valueString.replace(".", ",");
+      const formatedValue = data?.value.toLocaleString("pt-br", {
+        minimumFractionDigits: 2,
+      });
+      return formatedValue;
     }
   }, [data]);
 
@@ -33,7 +35,7 @@ const MonetaryCard = ({ data, daily, monthly }: Props) => {
 
   return (
     <Flex
-      w="232px"
+      w="250px"
       h="168px"
       borderRadius="15px"
       bg="#FFFFFF 0% 0% no-repeat padding-box"

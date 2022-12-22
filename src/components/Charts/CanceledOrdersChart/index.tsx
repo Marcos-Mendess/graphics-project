@@ -8,24 +8,42 @@ import { createChartValueArray } from "../../../utils";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 type Props = {
-  data: OrdersByMonthDashboard[];
+  ordersPerMonth: OrdersByMonthDashboard[];
+  canceledOrdersByMonth: OrdersByMonthDashboard[];
 };
 
-const OrdersChart = ({ data }: Props) => {
-  const chartValues = React.useMemo(() => {
-    return createChartValueArray(data);
-  }, [data]);
+const CanceledOrdersChart = ({
+  ordersPerMonth,
+  canceledOrdersByMonth,
+}: Props) => {
+  const canceledOrders = React.useMemo(() => {
+    return createChartValueArray(canceledOrdersByMonth);
+  }, [canceledOrdersByMonth]);
+
+  const ordersPlaced = React.useMemo(() => {
+    return createChartValueArray(ordersPerMonth);
+  }, [ordersPerMonth]);
 
   const series = [
     {
-      name: "Pedidos",
-      data: chartValues,
+      name: "Realizados",
+      data: canceledOrders,
+    },
+    {
+      name: "Cancelados",
+      data: ordersPlaced,
     },
   ];
 
   const options = {
+    colors: ["#109E8E", "#F18F7F"],
+    legend: {
+      position: "top" as const,
+      fontFamily: "Ubuntu",
+      fontSize: "16px",
+    },
     title: {
-      text: "Pedidos por mês",
+      text: "Pedidos realizados x pedidos cancelados",
       margin: 25,
       offsetX: 0,
       offsetY: 0,
@@ -42,7 +60,7 @@ const OrdersChart = ({ data }: Props) => {
         show: false,
       },
     },
-    colors: ["#393C56"],
+
     stroke: {
       colors: ["transparent"],
       width: 2,
@@ -51,13 +69,13 @@ const OrdersChart = ({ data }: Props) => {
       categories: months,
       labels: {
         style: {
-          color: ["#4D4141"],
           fontWeight: "bold",
           fontSize: "12px",
           fontFamily: "Ubuntu",
         },
       },
     },
+
     grid: {
       show: false,
     },
@@ -66,9 +84,10 @@ const OrdersChart = ({ data }: Props) => {
     },
     plotOptions: {
       bar: {
-        columnWidth: "40px",
+        columnWidth: "80px",
         borderRadius: 3,
       },
+
       dataLabels: {
         maxItems: 12,
       },
@@ -95,4 +114,4 @@ const OrdersChart = ({ data }: Props) => {
   );
 };
 
-export default OrdersChart;
+export default CanceledOrdersChart;

@@ -12,7 +12,7 @@ const AlertCard = ({ type, value, since }: AlertResponse) => {
 
   return (
     <Flex
-      w="232px"
+      w="270px"
       h="168px"
       borderRadius="15px"
       bg="#FFFFFF 0% 0% no-repeat padding-box"
@@ -26,7 +26,7 @@ const AlertCard = ({ type, value, since }: AlertResponse) => {
       {tempo ? (
         <Tag
           boxShadow="0px 0px 20px #0000001A"
-          maxW="75px"
+          maxW="80px"
           mt="12px"
           bg="#FFFFFF 0% 0% no-repeat padding-box"
           borderRadius="12px"
@@ -42,7 +42,7 @@ const AlertCard = ({ type, value, since }: AlertResponse) => {
           repor o quanto antes
         </Text>
       ) : null}
-      <HStack mt={type === "Acabando o estoque" ? "10px" : "38px"}>
+      <HStack mt={type === "Acabando o estoque" ? "8px" : "38px"}>
         <Text fontSize="20px" fontWeight="bold" color="#4E5D66">
           {value}
         </Text>

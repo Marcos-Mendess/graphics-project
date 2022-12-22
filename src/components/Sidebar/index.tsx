@@ -17,7 +17,7 @@ const SideBar = ({ selectedOptions, handleSelectedOptions }: Props) => {
       <Flex
         pos="sticky"
         left="5"
-        h="100vh"
+        h="100%"
         mt="2.5vh"
         w={navSize == "large" ? "88px" : "200px "}
         justifyContent="space-between"

@@ -30,7 +30,7 @@ const Card = ({
     <>
       {monetary ? (
         <Flex
-          w="232px"
+          w="240px"
           h="168px"
           borderRadius="15px"
           bg="#FFFFFF 0% 0% no-repeat padding-box"

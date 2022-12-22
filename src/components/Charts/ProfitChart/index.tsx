@@ -8,24 +8,48 @@ import { createChartValueArray } from "../../../utils";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 type Props = {
-  data: OrdersByMonthDashboard[];
+  expectedProfit: OrdersByMonthDashboard[];
+  realProfit: OrdersByMonthDashboard[];
 };
 
-const OrdersChart = ({ data }: Props) => {
-  const chartValues = React.useMemo(() => {
-    return createChartValueArray(data);
-  }, [data]);
+const ProfitChart = ({ expectedProfit, realProfit }: Props) => {
+  const expectedValues = React.useMemo(() => {
+    return createChartValueArray(expectedProfit);
+  }, [expectedProfit]);
+
+  const realValues = React.useMemo(() => {
+    return createChartValueArray(realProfit);
+  }, [realProfit]);
 
   const series = [
     {
-      name: "Pedidos",
-      data: chartValues,
+      name: "Lucro esperado",
+      data: expectedValues,
+    },
+    {
+      name: "Lucro real",
+      data: realValues,
     },
   ];
 
   const options = {
+    colors: ["#9DD6D3", "#F78899"],
+    legend: {
+      position: "top" as const,
+      fontFamily: "Ubuntu",
+      fontSize: "16px",
+    },
+    tooltip: {
+      y: {
+        formatter: (seriesNumber: any) =>
+          ` ${seriesNumber.toLocaleString("pt-br", {
+            style: "currency",
+            currency: "BRL",
+          })}`,
+      },
+    },
     title: {
-      text: "Pedidos por mês",
+      text: "Expectativa de lucro x lucro real",
       margin: 25,
       offsetX: 0,
       offsetY: 0,
@@ -42,7 +66,7 @@ const OrdersChart = ({ data }: Props) => {
         show: false,
       },
     },
-    colors: ["#393C56"],
+
     stroke: {
       colors: ["transparent"],
       width: 2,
@@ -51,13 +75,13 @@ const OrdersChart = ({ data }: Props) => {
       categories: months,
       labels: {
         style: {
-          color: ["#4D4141"],
           fontWeight: "bold",
           fontSize: "12px",
           fontFamily: "Ubuntu",
         },
       },
     },
+
     grid: {
       show: false,
     },
@@ -66,9 +90,10 @@ const OrdersChart = ({ data }: Props) => {
     },
     plotOptions: {
       bar: {
-        columnWidth: "40px",
+        columnWidth: "80px",
         borderRadius: 3,
       },
+
       dataLabels: {
         maxItems: 12,
       },
@@ -95,4 +120,4 @@ const OrdersChart = ({ data }: Props) => {
   );
 };
 
-export default OrdersChart;
+export default ProfitChart;

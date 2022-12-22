@@ -8,6 +8,11 @@ body {
     sans-serif;
 }
 
+@font-face {
+  font-family: Ubuntu;
+  src: url("../assets/fonts/Ubuntu-Bold.ttf");
+}
+
 a {
   color: inherit;
   text-decoration: none;
