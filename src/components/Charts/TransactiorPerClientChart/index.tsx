@@ -30,8 +30,6 @@ const TransactiorPerClientChart = () => {
     }
   }, [profileDataUser]);
 
-  console.log(categoryArray);
-
   const options = {
     colors: ["#9FD8D5", "#7BB686"],
     legend: {

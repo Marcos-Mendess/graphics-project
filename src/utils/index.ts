@@ -65,3 +65,7 @@ export const legendPipe = (value: string[]) => {
   });
   return newArray;
 };
+
+export const capitalizeFirstLetter = (value: string) => {
+  return value.charAt(0).toUpperCase() + value.slice(1);
+};

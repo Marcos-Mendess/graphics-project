@@ -10,7 +10,6 @@ import Table from "../Table";
 const DashBoard = () => {
   /** Hooks */
   const { isLoading } = useGetConversionResume();
-  /* const { data: products } = useGetProducts(); */
 
   return (
     <Flex

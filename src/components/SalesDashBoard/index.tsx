@@ -1,4 +1,4 @@
-import { Flex } from "@chakra-ui/react";
+import { HStack } from "@chakra-ui/react";
 import React from "react";
 import CanceledOrdersChart from "../Charts/CanceledOrdersChart";
 import OrdersChart from "../Charts/OrdersChart";
@@ -9,11 +9,11 @@ const SalesDashBoard = () => {
   return (
     <>
       <SectionTitle title="Dashboard de vendas" />
-      <Flex w="100%">
+      <HStack w="100%" spacing={8}>
         <OrdersChart />
         <ProfitChart />
         <CanceledOrdersChart />
-      </Flex>
+      </HStack>
     </>
   );
 };

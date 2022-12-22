@@ -330,22 +330,31 @@ export const useGetConversionResume = () => {
   });
 };
 
-export const useGetProducts = (currentPage: number, searchOption: string) => {
+export const useGetProducts = (
+  currentPage: number,
+  limit: number,
+  searchOption?: string
+) => {
   const toast = useToast();
   const page = React.useMemo(() => currentPage, [currentPage]);
   const search = React.useMemo(() => searchOption, [searchOption]);
+  const limitPerPage = React.useMemo(() => limit, [limit]);
 
-  return useQuery(["products", page, search], () => getProducts(page, search), {
-    refetchOnWindowFocus: false,
+  return useQuery(
+    ["products", page, search],
+    () => getProducts(page, limitPerPage, search),
+    {
+      refetchOnWindowFocus: false,
 
-    onError: () => {
-      toast({
-        title: "Erro ao carregar a listagem dos produtos",
-        description: "Ocorreu algum erro ao carregar a listagem dos produtos",
-        status: "error",
-        duration: 5000,
-        position: "bottom-left",
-      });
-    },
-  });
+      onError: () => {
+        toast({
+          title: "Erro ao carregar a listagem dos produtos",
+          description: "Ocorreu algum erro ao carregar a listagem dos produtos",
+          status: "error",
+          duration: 5000,
+          position: "bottom-left",
+        });
+      },
+    }
+  );
 };

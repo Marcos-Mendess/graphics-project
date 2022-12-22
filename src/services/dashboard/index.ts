@@ -1,5 +1,6 @@
 import {
   ConversionResume,
+  ItemList,
   OrdersByMonthDashboard,
   OrdersResponse,
   TicketResponse,
@@ -194,12 +195,17 @@ export async function getConversionResume() {
 /**
  * Serviço responsável por retornar número de pedidos por mês
  */
-export async function getProducts(page: number, search: string) {
-  const response = await axios.get<UsersResume>(
+export async function getProducts(
+  page: number,
+  limitPerPage: number,
+  search?: string
+) {
+  const response = await axios.get<ItemList[]>(
     `https://628bf017667aea3a3e387e51.mockapi.io/products`,
     {
       params: {
         page,
+        limit: limitPerPage,
         search,
       },
     }

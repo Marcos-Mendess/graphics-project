@@ -82,3 +82,12 @@ export type SessionPerSex = {
   male: string;
   female: string;
 };
+
+export type ItemList = {
+  createdAt: Date;
+  name: string;
+  color: string;
+  status: string;
+  description: string;
+  id: string;
+};
