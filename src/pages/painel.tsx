@@ -1,3 +1,5 @@
+import { Box } from "@chakra-ui/react";
+import Image from "next/image";
 import React from "react";
 import Header from "../components/Header";
 import SideBar from "../components/Sidebar";
@@ -11,14 +13,15 @@ const Painel = () => {
   const { data, isLoading } = useGetAvatarImage();
 
   return (
-    <>
-      <Header data={data as AvatarImage} isLoading={isLoading} />
-      <MainLayout />
-      <SideBar
-        selectedOptions={selectedOptions}
-        handleSelectedOptions={setSelectedOptions}
-      />
-    </>
+    <Box display="flex" overflowY="hidden" overflowX="hidden">
+      <MainLayout>
+        <Header data={data as AvatarImage} isLoading={isLoading} />
+        <SideBar
+          selectedOptions={selectedOptions}
+          handleSelectedOptions={setSelectedOptions}
+        />
+      </MainLayout>
+    </Box>
   );
 };
 

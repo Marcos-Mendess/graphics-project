@@ -1,4 +1,4 @@
-import { Flex, Spinner } from "@chakra-ui/react";
+import { Box, Flex, Spinner } from "@chakra-ui/react";
 import React from "react";
 import {
   useGetConversionResume,
@@ -18,8 +18,8 @@ const DashBoard = () => {
 
   return (
     <Flex
-      minW="90vw"
-      minH="90vh"
+      minW="100vw"
+      minH="100vh"
       w="90vw"
       flexDir="column"
       alignItems="start"
@@ -36,15 +36,17 @@ const DashBoard = () => {
           />
         </Flex>
       ) : (
-        <>
+        <Box overflowY="scroll" position="relative" h="85vh">
           <MainPageTitle title="Início" />
           <InitialCardContainer />
-        </>
+          <SectionTitle title="Dashboard de vendas" />
+          <Flex w="100%">
+            <SalesDashBoard />
+          </Flex>
+          <SectionTitle title="Funil de conversão" />
+          <InitialCardContainer />
+        </Box>
       )}
-      <SectionTitle title="Dashboard de vendas" />
-      <Flex w="100%">
-        <SalesDashBoard />
-      </Flex>
     </Flex>
   );
 };

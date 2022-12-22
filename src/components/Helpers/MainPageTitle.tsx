@@ -7,7 +7,7 @@ type TitleSection = {
 
 const MainPageTitle = ({ title }: TitleSection) => {
   return (
-    <Flex justifyContent="center" alignItems="start">
+    <Flex alignItems="start !important">
       <Text
         color="#4E5D66"
         fontWeight="bold"

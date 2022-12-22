@@ -1,5 +1,5 @@
 import React from "react";
-import { Divider, Flex, IconButton } from "@chakra-ui/react";
+import { Box, Divider, Flex, IconButton } from "@chakra-ui/react";
 import NavItem from "../NavItem";
 import MenuIcon from "../icons/Menu";
 import { SideNavOptions } from "../../types/menu";
@@ -15,7 +15,6 @@ const SideBar = ({ selectedOptions, handleSelectedOptions }: Props) => {
   return (
     <>
       <Flex
-        pos="sticky"
         left="5"
         h="100%"
         mt="2.5vh"
@@ -23,6 +22,7 @@ const SideBar = ({ selectedOptions, handleSelectedOptions }: Props) => {
         justifyContent="space-between"
         data-testid="sidenavbar-container"
         transition=".3s ease"
+        ml="16px"
       >
         <Flex
           p="5%"
@@ -67,13 +67,12 @@ const SideBar = ({ selectedOptions, handleSelectedOptions }: Props) => {
             );
           })}
         </Flex>
-        <Flex w="100%">{showServicesByOptions(selectedOptions)}</Flex>
+        <Box display="flex" w="100%" h="100%">
+          {showServicesByOptions(selectedOptions)}
+        </Box>
       </Flex>
     </>
   );
 };
 
 export default SideBar;
-
-{
-}

@@ -1,4 +1,5 @@
-import { Avatar, Flex, Spinner, Text } from "@chakra-ui/react";
+import { Avatar, Flex, Link, Spinner, Text } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 import React from "react";
 import { AvatarImage } from "../../types/menu";
 import LogoIcon from "../icons/HeaderIcon";
@@ -9,6 +10,7 @@ type Props = {
 };
 
 const Header = ({ data, isLoading }: Props) => {
+  const router = useRouter();
   return (
     <>
       <Flex
@@ -22,7 +24,14 @@ const Header = ({ data, isLoading }: Props) => {
         boxShadow="0px 3px 6px #00000014"
         h="84px"
       >
-        <LogoIcon viewBox="0 0 69 59" boxSize="59px" ml="40px" />
+        <Link
+          w="60px"
+          h="60px"
+          ml="40px"
+          onClick={() => router.push("/painel")}
+        >
+          <LogoIcon viewBox="0 0 69 59" boxSize="59px" />
+        </Link>
         <Flex alignItems="center" fontSize="16px" mr="20px">
           {!isLoading ? (
             <>
