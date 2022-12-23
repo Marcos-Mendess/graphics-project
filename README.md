@@ -1,34 +1,45 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div align='center'>
 
-## Getting Started
+<div>
+    <img src="https://img.shields.io/github/repo-size/Marcos-Mendess/graphics-project">
+    <img src="https://img.shields.io/github/last-commit/Marcos-Mendess/graphics-project">
+    <img src="https://img.shields.io/github/languages/count/Marcos-Mendess/graphics-project">
+    <img src="https://img.shields.io/github/languages/top/Marcos-Mendess/graphics-project">
+</div>
 
-First, run the development server:
+</div>
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+</br>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<h2>🔖 Descrição</h2>
+<p> 💰 Criação de controle de vendas e pedidos genérica.</p>
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+</br>
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+<h2>🚀 Tecnologias</h2>
+<ul>
+    <li><a href="https://www.typescriptlang.org/docs/handbook/intro.html" target="_blank">Typescript</a></li>
+    <li><a href="https://create-react-app.dev/" target="_blank">React</a></li>
+    <li><a href="https://chakra-ui.com/" target="_blank">Chakra UI</a></li>
+    <li><a href="https://apexcharts.com/docs/react-charts/" target="_blank">ApexCharts</a></li>
+    <li><a href="https://react-leaflet.js.org/" target="_blank">Leaflet</a></li>
+</ul>
 
-## Learn More
+<br>
 
-To learn more about Next.js, take a look at the following resources:
+<h2>ℹ️ Como utilizar</h2>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    Clone esse repositório
+    $ git clone https://github.com/Marcos-Mendess/graphics-project.git
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+    Instalar dependências
+    $ npm install
 
-## Deploy on Vercel
+    Inicie o projeto
+    $ npm start
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<br>
+Criado com 💙 por <a href="https://github.com/Marcos-Mendess" target="_blank">Marcos Mendes</a></p>
+
