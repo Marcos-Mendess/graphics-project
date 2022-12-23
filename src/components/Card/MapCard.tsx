@@ -1,4 +1,4 @@
-import { Flex, HStack, Tag, Text } from "@chakra-ui/react";
+import { Box, Flex, HStack, Tag, Text } from "@chakra-ui/react";
 import React from "react";
 import { TicketResponse } from "../../types/menu";
 import { getLastMonth } from "../../utils";
@@ -10,7 +10,7 @@ type Props = {
   orders?: boolean;
 };
 
-const ProductCard = ({ data, daily, monthly, orders }: Props) => {
+const MapCard = ({ data, daily, monthly, orders }: Props) => {
   const lastMonth = getLastMonth();
 
   const value = React.useMemo(() => {
@@ -33,36 +33,23 @@ const ProductCard = ({ data, daily, monthly, orders }: Props) => {
   }, [data]);
 
   return (
-    <Flex
-      w="250px"
-      h="168px"
-      borderRadius="15px"
-      bg="#FFFFFF 0% 0% no-repeat padding-box"
-      direction="column"
-      p={5}
-      fontFamily="Ubuntu"
-    >
+    <Box>
       {daily ? (
-        <Text color="#4E5D66" fontWeight="bold">
+        <Text color="#4E5D66" fontWeight="bold" fontFamily="Ubuntu">
           Pedidos realizados nas últimas 24h
         </Text>
       ) : null}
-      {monthly && !orders ? (
-        <Text color="#4E5D66" fontWeight="bold">
-          Pedidos realizados no mês
-        </Text>
-      ) : null}
       {orders ? (
-        <Text color="#4E5D66" fontWeight="bold">
-          Produtos vendidos no mês
+        <Text color="#4E5D66" fontWeight="bold" fontFamily="Ubuntu">
+          Pedidos realizados no mês
         </Text>
       ) : null}
       {percentageValue ? (
         <Tag
+          mt="-10px"
           boxShadow="0px 0px 20px #0000001A"
           w="55px"
           ml="4px"
-          mt="12px"
           bg="#FFFFFF 0% 0% no-repeat padding-box"
           borderRadius="12px"
           fontSize="12px"
@@ -72,11 +59,7 @@ const ProductCard = ({ data, daily, monthly, orders }: Props) => {
         </Tag>
       ) : null}
       {daily ? (
-        <Text
-          color={negativeGrowth ? "#D6628E" : "#109E8E"}
-          fontSize="14px"
-          mt="10px"
-        >
+        <Text color={negativeGrowth ? "#D6628E" : "#109E8E"} fontSize="14px">
           em relação a ontem
         </Text>
       ) : null}
@@ -84,13 +67,13 @@ const ProductCard = ({ data, daily, monthly, orders }: Props) => {
         <Text
           color={negativeGrowth ? "#D6628E" : "#109E8E"}
           fontSize="14px"
-          mt="10px"
+          fontFamily="Ubuntu"
+          mt="4px !important"
         >
           em relação a {lastMonth}
         </Text>
       ) : null}
-
-      <HStack mt="8px">
+      <HStack h="20px">
         <Text fontSize="20px" fontWeight="bold" color="#4E5D66">
           {value}
         </Text>
@@ -104,8 +87,8 @@ const ProductCard = ({ data, daily, monthly, orders }: Props) => {
           </Text>
         )}
       </HStack>
-    </Flex>
+    </Box>
   );
 };
 
-export default ProductCard;
+export default MapCard;

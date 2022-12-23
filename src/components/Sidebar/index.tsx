@@ -12,6 +12,7 @@ type Props = {
 
 const SideBar = ({ selectedOptions, handleSelectedOptions }: Props) => {
   const [navSize, changeNavSize] = React.useState("large");
+
   return (
     <>
       <Flex

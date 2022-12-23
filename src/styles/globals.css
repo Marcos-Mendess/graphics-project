@@ -9,7 +9,12 @@ body {
 
 @font-face {
   font-family: Ubuntu;
-  src: url("../assets/fonts/Ubuntu-Bold.ttf");
+  src: url("../assets/fonts/Ubuntu-Regular.ttf");
+}
+
+@font-face {
+  font-family: NunitoSans;
+  src: url("../assets/fonts/NunitoSans-SemiBold.ttf");
 }
 
 a {

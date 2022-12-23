@@ -54,7 +54,7 @@ const TableItem = ({ name, status, color }: Props) => {
               </Box>
               <Box>
                 {tagLabelsTitle.map((value) => {
-                  return <TagLabel title={value} key="value" />;
+                  return <TagLabel title={value} key={value} />;
                 })}
               </Box>
               <Flex ml="4.3vw" mt="26px">

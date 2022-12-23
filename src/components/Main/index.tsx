@@ -3,7 +3,6 @@ import {
   Button,
   Flex,
   FormControl,
-  FormErrorMessage,
   FormLabel,
   IconButton,
   Input,
@@ -69,7 +68,7 @@ const Login = () => {
   /** Realiza autorização de login */
   const handleSignIn = React.useCallback(async () => {
     if (payload) {
-      const mutationResponse = await mutation.mutateAsync(payload as Oauth);
+      await mutation.mutateAsync(payload as Oauth);
     }
   }, [payload, mutation]);
 
@@ -90,7 +89,7 @@ const Login = () => {
           <Box opacity="1.0">
             <Text
               fontSize="24px"
-              fontFamily="Nunito Sans"
+              fontFamily="NunitoSans"
               fontWeight={600}
               mt={42}
               textAlign="center"
@@ -104,7 +103,7 @@ const Login = () => {
                 }
               >
                 <FormControl
-                  fontFamily="Nunito Sans !important"
+                  fontFamily="Ubuntu !important"
                   isInvalid={!!errors?.email}
                 >
                   <FormLabel
@@ -117,6 +116,7 @@ const Login = () => {
                     E-mail
                   </FormLabel>
                   <Input
+                    size="lg"
                     variant="loginVariant"
                     backgroundColor="#F3F5F6"
                     placeholder="Digite seu e-mail"
@@ -152,7 +152,6 @@ const Login = () => {
                       placeholder="Digite sua senha"
                       autoFocus={true}
                       data-testid="input-password"
-                      size="lg"
                       type={showPass ? "text" : "password"}
                       aria-label="Seu e-mail"
                       isInvalid={!!(errors.password && errors.password.message)}

@@ -12,7 +12,7 @@ const AlertCard = ({ type, value, since }: AlertResponse) => {
 
   return (
     <Flex
-      w="270px"
+      w="250px"
       h="168px"
       borderRadius="15px"
       bg="#FFFFFF 0% 0% no-repeat padding-box"

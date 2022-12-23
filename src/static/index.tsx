@@ -8,9 +8,11 @@ import PersonIcon from "../components/icons/Person";
 import ServicesIcon from "../components/icons/Services";
 import ShopCartIcon from "../components/icons/ShopCart";
 import TextIcon from "../components/icons/Text";
-import Logistics from "../components/Logistics";
 import NewProduct from "../components/NewProduct";
 import { ServicesList, SideNavOptions } from "../types/menu";
+import dynamic from "next/dynamic";
+
+const Logistics = dynamic(() => import("../components/Logistics"));
 
 /** Função responsável por renderizar determinado componente
  * segundo a escolha na sidebar

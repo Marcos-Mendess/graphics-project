@@ -13,9 +13,9 @@ export async function loginOauth({ email, password }: Oauth) {
     password,
   };
 
-  /*   if (email !== "edu@edu.com" && password !== "1234") {
+  if (email !== "edu@edu.com" && password !== "1234") {
     throw new Error("Invalid credentials");
-  } */
+  }
   const response = await axios.get<OAuthResponse>(
     `https://628bf017667aea3a3e387e51.mockapi.io/login`,
     payload

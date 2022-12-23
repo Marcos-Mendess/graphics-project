@@ -1,8 +1,17 @@
 import { SearchIcon } from "@chakra-ui/icons";
-import { Input, InputGroup, InputRightElement } from "@chakra-ui/react";
-import React from "react";
+import {
+  Input,
+  InputGroup,
+  InputProps,
+  InputRightElement,
+} from "@chakra-ui/react";
+import React, { Dispatch, SetStateAction } from "react";
 
-const TableInputSearch = () => {
+interface InputSearch extends InputProps {
+  setSearchValue?: Dispatch<SetStateAction<string>>;
+}
+
+const TableInputSearch = ({ setSearchValue }: InputSearch) => {
   return (
     <InputGroup
       maxW="388px"
@@ -21,6 +30,9 @@ const TableInputSearch = () => {
         fontFamily="Ubuntu"
         color="#333333"
         outline="transparent solid 2px "
+        onChange={(e) => {
+          if (setSearchValue) setSearchValue(e.target.value);
+        }}
         _placeholder={{ color: "none", fontWeight: "normal" }}
         borderWidth="1px"
       ></Input>

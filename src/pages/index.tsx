@@ -5,8 +5,9 @@ import MainLayout from "../layout/Auth/MainLayout";
 export default function Home() {
   return (
     <>
-      <MainLayout></MainLayout>
-      <Login />
+      <MainLayout>
+        <Login />
+      </MainLayout>
     </>
   );
 }
